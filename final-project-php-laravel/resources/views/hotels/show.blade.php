@@ -19,7 +19,6 @@
         </div>
         <div class="flex flex-col">
             <div class="text-2xl text-center md:text-start font-bold">Забронировать комнату</div>
-
             <form method="get" action="{{ url()->current() }}">
                 <div class="flex my-6">
                     <div class="flex items-center mr-5">

@@ -24,10 +24,11 @@
             </div>
             <form class="ml-4" method="POST" action="{{ route('bookings.store') }}">
                 @csrf
-                <input type="hidden" name="started_at" value="{{ request()->get('start_date', \Carbon\Carbon::now()->format('d-m-Y')) }}">
-                <input type="hidden" name="finished_at" value="{{ request()->get('end_date', \Carbon\Carbon::now()->format('d-m-Y')) }}">
+                <input type="hidden" name="started_at" value="{{ request()->get('start_date', \Carbon\Carbon::now()->format('Y-m-d')) }}">
+                <input type="hidden" name="finished_at" value="{{ request()->get('end_date', \Carbon\Carbon::now()->format('Y-m-d')) }}">
                 <input type="hidden" name="room_id" value="{{ $room->id }}">
                 <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                <input type="hidden" name="price" value="{{ $room->price }}">
                 <x-the-button class=" h-full w-full">{{ __('Book') }}</x-the-button>
             </form>
         </div>

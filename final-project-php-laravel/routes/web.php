@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
@@ -37,4 +38,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('hotels', HotelController::class);
     Route::resource('bookings', BookingController::class);
     Route::resource('rooms', RoomController::class);
+});
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
 });

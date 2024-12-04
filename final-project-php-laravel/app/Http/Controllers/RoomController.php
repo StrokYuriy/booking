@@ -19,12 +19,6 @@ class RoomController extends Controller
     public function index()
     {
         $rooms = $this->roomService->index();
-        //return view('hotels.index', compact('rooms'));
-        //dd($rooms);
-        //return $rooms;
-        //return view('hotels.show', compact('rooms'));
-        //return response()->json($rooms, 200);
-        //return $this->roomService->index();
     }
 
     /**

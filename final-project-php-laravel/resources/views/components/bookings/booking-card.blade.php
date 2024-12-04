@@ -22,9 +22,9 @@
                     <h3 class="text-xl xl:text-2xl font-semibold leading-6 text-gray-800">{{ $booking->room->title }}</h3>
                     <div class="flex justify-start items-start flex-col space-y-2">
                         <p class="text-sm leading-none text-gray-800"><span>Даты: </span>
-                            {{ \Carbon\Carbon::parse($booking->started_at)->format('d.m.Y') }}
+                            {{ \Carbon\Carbon::parse($booking->started_at)->format('Y-m-d') }}
                             по
-                            {{ \Carbon\Carbon::parse($booking->finished_at)->format('d.m.Y') }}</p>
+                            {{ \Carbon\Carbon::parse($booking->finished_at)->format('Y-m-d') }}</p>
                         <p class="text-sm leading-none text-gray-800"><span>Кол-во ночей: </span> {{ $booking->days }}
                         </p>
                     </div>

@@ -25,8 +25,3 @@ Route::get('/', function (){
 Route::get('/flights', function () {
     // только аутентифицированные юзеры могут попасть сюда
 })->middleware('auth');
-/*
-Route::resource('hotels', \App\Http\Controllers\HotelController::class);
-Route::resource('bookings', \App\Http\Controllers\BookingController::class);
-Route::resource('rooms', \App\Http\Controllers\RoomController::class);
-*/

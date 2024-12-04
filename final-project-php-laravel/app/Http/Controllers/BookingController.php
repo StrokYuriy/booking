@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Room;
 use App\Models\User;
 use App\Service\BookingService;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class BookingController extends Controller
 {
@@ -21,6 +23,7 @@ class BookingController extends Controller
     public function index()
     {
         $bookings = $this->bookingService->index();
+
         return view('bookings.index', compact('bookings'));
     }
 
@@ -29,9 +32,24 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+        $id = $request->room_id;
+        $room = Room::with('bookings')->find($id);
         $booking = $request->all();
+        foreach ($room->bookings as $roomBooking) {
+            if (($booking['started_at'] >= $roomBooking->started_at && $booking['started_at'] < $roomBooking->finished_at)
+                || ($booking['finished_at'] > $roomBooking->started_at && $booking['finished_at'] <= $roomBooking->finished_at)
+                || ($booking['started_at'] < $roomBooking->started_at && $booking['finished_at'] > $roomBooking->finished_at)) {
+
+                throw ValidationException::withMessages(['Номер занят, выберите другую дату и нажмите "Загрузить номера"']);
+            }
+        }
+
+        $seconds = strtotime($request['finished_at']) - strtotime($request['started_at']);
+        $booking['days'] = round($seconds / 86400, 1);
+        $booking['price'] = $booking['days'] * $request['price'];
         $this->bookingService->create($booking);
-        return back()->with('status', 'Booking successfully created', 201);
+
+        return redirect()->route('bookings.index');
     }
 
     /**
@@ -40,6 +58,7 @@ class BookingController extends Controller
     public function show($id)
     {
         $booking = $this->bookingService->edit($id);
+
         return view('bookings.show', compact('booking'));
     }
     /**
@@ -50,6 +69,7 @@ class BookingController extends Controller
         $booking = $this->bookingService->edit($id);
         $booking->update($request->all());
         $this->bookingService->update($booking);
+
         return view('bookings.show', compact('booking'));
     }
 
@@ -59,6 +79,7 @@ class BookingController extends Controller
     public function destroy($id)
     {
         $this->bookingService->destroy($id);
+
         return redirect('bookings')->with('the record was deleted from the database', 204);
     }
 }

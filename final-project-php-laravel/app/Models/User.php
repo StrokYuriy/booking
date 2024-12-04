@@ -8,9 +8,15 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends \TCG\Voyager\Models\User
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public function setNameAttribute($name)
+    {
+        $this->attributes['full_name'] = $name;
+    }
+
 
     protected $fillable = [
         'full_name',
