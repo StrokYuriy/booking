@@ -56,6 +56,17 @@
 
                         <x-slot name="content">
                             <!-- Authentication -->
+                            @if(Auth::user()->role_id == 1)
+                            <form method="GET" action="{{ url('admin') }}">
+                                @csrf
+
+                                <x-dropdown-link :href="url('admin')"
+                                                 onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                    {{ __('Admins') }}
+                                </x-dropdown-link>
+                            </form>
+                            @endif
                             <form method="GET" action="{{ route('profile.edit') }}">
                                 @csrf
 

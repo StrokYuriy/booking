@@ -14,11 +14,12 @@
                 <span class="text-lg"> за ночь</span>
             </div>
         @endif
+
         @if($hotel->facilities->isNotEmpty())
             <div class="flex items-center py-2">
-                @foreach($hotel->facilities->take(2) as $facility)
+                @foreach($hotel->facilities as $facility)
                     <div class="pr-2 text-xs">
-                        <span>•</span> {{ $facility->title }}
+                        <span>• {{ $facility->title }} </span>
                     </div>
                 @endforeach
             </div>

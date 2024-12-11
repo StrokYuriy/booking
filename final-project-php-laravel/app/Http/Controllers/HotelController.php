@@ -29,9 +29,6 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        $hotel = $request->all($request);
-        $this->hotelService->create($hotel);
-        return response()->json($hotel, 201);
     }
 
     /**
@@ -40,6 +37,7 @@ class HotelController extends Controller
     public function show($id)
     {
         $hotel = $this->hotelService->edit($id);
+
         return view('hotels.show', compact('hotel'));
     }
 
@@ -48,9 +46,6 @@ class HotelController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
-        $hotel->update($request->all());
-        $this->hotelService->update($hotel);
-        return response()->json($hotel, 202);
     }
 
     /**

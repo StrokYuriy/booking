@@ -4,8 +4,6 @@ namespace App\Service;
 
 use App\Models\Hotel;
 
-//use App\Service\HotelInterface;
-
 class HotelService implements AllInterface
 {
     public function index()
@@ -21,7 +19,6 @@ class HotelService implements AllInterface
     public function edit($id)
     {
         return Hotel::find($id);
-        //return Hotel::with('room')->findOrFail($id);
     }
 
     public function update($request)

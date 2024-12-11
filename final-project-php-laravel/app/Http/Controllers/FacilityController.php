@@ -18,9 +18,8 @@ class FacilityController extends Controller
      */
     public function index()
     {
-        $fatilities = $this->facilityService->index();
-        return $fatilities;
-        //return response()->json($fatilities, 200);
+        $facilities = $this->facilityService->index();
+        return response()->json($facilities, 200);
         //return view('components.hotels.hotel-card', compact('fatilities'));
     }
 
@@ -29,9 +28,9 @@ class FacilityController extends Controller
      */
     public function store(Request $request)
     {
-        $fatility = $request->all($request);
-        $this->facilityService->create($fatility);
-        return response()->json($fatility, 201);
+        $facility = $request->all($request);
+        $this->facilityService->create($facility);
+        return response()->json($facility, 201);
     }
 
     /**
@@ -47,10 +46,10 @@ class FacilityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $fatility = $this->facilityService->edit($id);
-        $fatility->update($request->all());
-        $this->facilityService->update($fatility);
-        return response()->json($fatility, 202);
+        $facility = $this->facilityService->edit($id);
+        $facility->update($request->all());
+        $this->facilityService->update($facility);
+        return response()->json($facility, 202);
     }
 
     /**

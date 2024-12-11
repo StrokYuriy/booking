@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('room_id')->constrained();   //->references('id')->on('rooms');
             $table->foreignId('user_id')->constrained();    //->references('id')->on('users');
-            $table->timestamp('started_at');
-            $table->timestamp('finished_at');
+            $table->timestamp('started_at')->nullable();
+            $table->timestamp('finished_at')->nullable();
             $table->integer('days');
             $table->integer('price');
             $table->timestamp('created_at')->nullable();

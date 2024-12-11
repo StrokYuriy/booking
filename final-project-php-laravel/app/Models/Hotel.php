@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -46,8 +48,9 @@ class Hotel extends Model
         return $this->hasMany(Room::class);
     }
 
-    public function facilities()
+    public function facilities(): BelongsToMany
     {
-        return $this->hasMany(FacilityHotel::class);
+        return $this->belongsToMany(Facility::class, 'facility_hotels');
     }
+
 }

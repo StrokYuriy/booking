@@ -18,8 +18,8 @@ class FacilityRoomController extends Controller
      */
     public function index()
     {
-        $fatilityRoom = $this->facilityRoomService->index();
-        return response()->json($fatilityRoom, 200);
+        $facilityRoom = $this->facilityRoomService->index();
+        return response()->json($facilityRoom, 200);
     }
 
     /**
@@ -27,9 +27,9 @@ class FacilityRoomController extends Controller
      */
     public function store(Request $request)
     {
-        $fatilityRoom = $request->all($request);
-        $this->facilityRoomService->create($fatilityRoom);
-        return response()->json($fatilityRoom, 201);
+        $facilityRoom = $request->all($request);
+        $this->facilityRoomService->create($facilityRoom);
+        return response()->json($facilityRoom, 201);
     }
 
     /**
@@ -45,10 +45,10 @@ class FacilityRoomController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $fatilityRoom = $this->facilityRoomService->edit($id);
-        $fatilityRoom->update($request->all());
-        $this->facilityRoomService->update($fatilityRoom);
-        return response()->json($fatilityRoom, 202);
+        $facilityRoom = $this->facilityRoomService->edit($id);
+        $facilityRoom->update($request->all());
+        $this->facilityRoomService->update($facilityRoom);
+        return response()->json($facilityRoom, 202);
     }
 
     /**

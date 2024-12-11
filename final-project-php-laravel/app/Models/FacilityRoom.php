@@ -36,14 +36,4 @@ class FacilityRoom extends Model
      */
     protected $casts = [
     ];
-
-    /*public function facility()
-    {
-        return $this->hasOne(FacilityRoom::class);
-    }
-
-    public function room()
-    {
-        return $this->hasOne(Room::class);
-    }*/
 }

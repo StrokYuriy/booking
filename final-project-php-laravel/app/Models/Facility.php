@@ -37,13 +37,13 @@ class Facility extends Model
     protected $casts = [
     ];
 
-    public function hotel()
+    public function hotels()
     {
-        return $this->belongsTo(FacilityHotel::class);
+        return $this->belongsToMany(Hotel::class, 'facility_hotels');
     }
 
-    public function rooms(): BelongsTo
+    public function rooms()
     {
-        return $this->belongsTo(FacilityRoom::class);
+        return $this->belongsToMany(Room::class, 'facility_rooms');
     }
 }

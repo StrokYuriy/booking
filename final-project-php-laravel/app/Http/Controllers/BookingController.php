@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
-use App\Models\User;
 use App\Service\BookingService;
-use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 

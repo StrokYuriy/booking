@@ -56,6 +56,6 @@ class Room extends Model
 
     public function facilities()
     {
-        return $this->hasMany(FacilityRoom::class);
+        return $this->belongsToMany(Facility::class, 'facility_rooms');
     }
 }

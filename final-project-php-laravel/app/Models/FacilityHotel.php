@@ -36,14 +36,4 @@ class FacilityHotel extends Model
      */
     protected $casts = [
     ];
-
-    public function facility()
-    {
-        return $this->belongsTo(Facility::class);
-    }
-
-    public function hotels()
-    {
-        return $this->belongsTo(Hotel::class);
-    }
 }

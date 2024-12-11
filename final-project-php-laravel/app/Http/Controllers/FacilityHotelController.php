@@ -18,8 +18,8 @@ class FacilityHotelController extends Controller
      */
     public function index()
     {
-        $fatilityHotel = $this->facilityHotelService->index();
-        return response()->json($fatilityHotel, 200);
+        $facilityHotel = $this->facilityHotelService->index();
+        return response()->json($facilityHotel, 200);
     }
 
     /**
@@ -27,9 +27,9 @@ class FacilityHotelController extends Controller
      */
     public function store(Request $request)
     {
-        $fatilityHotel = $request->all($request);
-        $this->facilityHotelService->create($fatilityHotel);
-        return response()->json($fatilityHotel, 201);
+        $facilityHotel = $request->all($request);
+        $this->facilityHotelService->create($facilityHotel);
+        return response()->json($facilityHotel, 201);
     }
 
     /**
@@ -45,10 +45,10 @@ class FacilityHotelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $fatilityHotel = $this->facilityHotelService->edit($id);
-        $fatilityHotel->update($request->all());
-        $this->facilityHotelService->update($fatilityHotel);
-        return response()->json($fatilityHotel, 202);
+        $facilityHotel = $this->facilityHotelService->edit($id);
+        $facilityHotel->update($request->all());
+        $this->facilityHotelService->update($facilityHotel);
+        return response()->json($facilityHotel, 202);
     }
 
     /**
